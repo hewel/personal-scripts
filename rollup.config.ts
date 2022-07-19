@@ -1,15 +1,37 @@
 import { RollupOptions } from "rollup";
+import alias from "@rollup/plugin-alias";
 import { nodeResolve } from "@rollup/plugin-node-resolve";
 import commonjs from "@rollup/plugin-commonjs";
+import WindiCSS from "rollup-plugin-windicss";
+import styles from "rollup-plugin-styles";
 import { terser } from "rollup-plugin-terser";
 import { taskEither as TE, array as A, either as E } from "fp-ts";
-import { packages } from "./scripts/package";
+import { packages, DIRNAME } from "./scripts/package";
 import { banner } from "./scripts/banner";
 
 const isProd = !process.env.ROLLUP_WATCH;
 const plugins = [
+  alias({
+    entries: [
+      { find: "react", replacement: "preact/compat" },
+      { find: "react-dom/test-utils", replacement: "preact/test-utils" },
+      { find: "react-dom", replacement: "preact/compat" },
+      { find: "react/jsx-runtime", replacement: "preact/jsx-runtime" },
+    ],
+  }),
   nodeResolve(),
   commonjs(),
+  ...WindiCSS({
+    config: {
+      extract: {
+        include: [`${DIRNAME}/**/*.{bs.js,res}`],
+      },
+    },
+  }),
+  // stylable(),
+  styles({
+    minimize: isProd,
+  }),
   isProd &&
     terser({
       format: {
@@ -33,4 +55,4 @@ const createConfig = A.map(({ banner: b, files, script, packageJson }) => ({
 
 const config = TE.map(createConfig)(packages);
 
-export default config().then((config) => E.getOrElseW(() => [])(config));
+export default config().then((config) => E.getOrElseW(() => ({}))(config));

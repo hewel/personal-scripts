@@ -1,7 +1,13 @@
 import path from "path";
 import { readdir, readFile } from "fs/promises";
 import { equals, endsWith } from "ramda";
-import { taskEither as TE, either as E, array as A, json } from "fp-ts";
+import {
+  taskEither as TE,
+  either as E,
+  array as A,
+  option as O,
+  json,
+} from "fp-ts";
 import { pipe, flow } from "fp-ts/function";
 
 export const DIRNAME = "packages";
@@ -17,6 +23,8 @@ export interface Banner extends PackageJson {
   match: string;
   icon: string;
 }
+
+const NOT_PACKAGES = ["components", "utils"];
 
 const eqBasename = (name: string) => (p: string) => path.parse(p).base === name;
 
@@ -80,5 +88,6 @@ export const packages = pipe(
       () => readdir(path),
       (reason) => new Error(String(reason))
     ),
+  TE.map(A.filter((file) => !NOT_PACKAGES.includes(file))),
   TE.chain(TE.traverseArray(resolvePackage))
 );
