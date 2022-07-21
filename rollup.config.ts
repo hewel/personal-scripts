@@ -4,6 +4,7 @@ import { nodeResolve } from "@rollup/plugin-node-resolve";
 import commonjs from "@rollup/plugin-commonjs";
 import WindiCSS from "rollup-plugin-windicss";
 import styles from "rollup-plugin-styles";
+import stylable from "@stylable/rollup-plugin";
 import { terser } from "rollup-plugin-terser";
 import { taskEither as TE, array as A, either as E } from "fp-ts";
 import { packages, DIRNAME } from "./scripts/package";
@@ -21,6 +22,7 @@ const plugins = [
   }),
   nodeResolve(),
   commonjs(),
+
   ...WindiCSS({
     config: {
       extract: {
@@ -28,10 +30,13 @@ const plugins = [
       },
     },
   }),
-  // stylable(),
+  stylable(),
   styles({
     minimize: isProd,
+    autoModules: true,
+    exclude: [/\.st\.css$/],
   }),
+
   isProd &&
     terser({
       format: {
