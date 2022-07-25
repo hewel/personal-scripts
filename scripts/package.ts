@@ -24,7 +24,7 @@ export interface Banner extends PackageJson {
   icon: string;
 }
 
-const NOT_PACKAGES = ["components", "utils"];
+const NOT_PACKAGES = ["components", "utils", "bind"];
 
 const eqBasename = (name: string) => (p: string) => path.parse(p).base === name;
 
@@ -88,6 +88,6 @@ export const packages = pipe(
       () => readdir(path),
       (reason) => new Error(String(reason))
     ),
-  TE.map(A.filter((file) => !NOT_PACKAGES.includes(file))),
+  TE.map(A.filter((file) => !NOT_PACKAGES.includes(file.toLowerCase()))),
   TE.chain(TE.traverseArray(resolvePackage))
 );

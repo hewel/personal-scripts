@@ -8,4 +8,7 @@ lib
 
 *.bs.js
 
-dist/*.js
+.parcel-cache
+
+dist/**/*.js
+dist/**/*.*.map

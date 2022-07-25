@@ -8,7 +8,9 @@ importers:
       '@rescript/react': ^0.10.3
       '@rollup/plugin-alias': ^3.1.9
       '@rollup/plugin-commonjs': ^22.0.0
+      '@rollup/plugin-inject': ^4.0.4
       '@rollup/plugin-node-resolve': ^13.3.0
+      '@rollup/plugin-replace': ^4.0.0
       '@rollup/plugin-sucrase': ^4.0.4
       '@stylable/core': ^5.0.1
       '@stylable/rollup-plugin': ^5.0.1
@@ -32,24 +34,28 @@ importers:
       rollup-plugin-windicss: ^1.8.7
       typescript: ^4.7.3
       windicss: ^3.5.6
+      zustand: 4.0.0-rc.4
     dependencies:
-      '@fattafatta/rescript-jotai': 0.1.3_5h5puqnmpjalfurkk3ab5chqnu
+      '@fattafatta/rescript-jotai': 0.1.3_n47gytudsukodmg2sgbus5m4iq
       '@rescript/react': 0.10.3_dmmjpkrptnkrz2kzqikv5vt4mi
       '@rollup/plugin-sucrase': 4.0.4_rollup@2.75.6
       '@stylable/core': 5.0.1
       '@tabler/icons': 1.76.0_dmmjpkrptnkrz2kzqikv5vt4mi
       fp-ts: 2.12.1
-      jotai: 1.7.5_@preact+compat@17.1.1
-      preact: 10.9.0
+      jotai: 1.7.6_@preact+compat@17.1.1
+      preact: 10.10.0
       ramda: 0.28.0
-      react: /@preact/compat/17.1.1_preact@10.9.0
-      react-dom: /@preact/compat/17.1.1_preact@10.9.0
+      react: /@preact/compat/17.1.1_preact@10.10.0
+      react-dom: /@preact/compat/17.1.1_preact@10.10.0
       rescript-webapi: 0.6.1
       typescript: 4.7.3
+      zustand: 4.0.0-rc.4_@preact+compat@17.1.1
     devDependencies:
       '@rollup/plugin-alias': 3.1.9_rollup@2.75.6
       '@rollup/plugin-commonjs': 22.0.0_rollup@2.75.6
+      '@rollup/plugin-inject': 4.0.4_rollup@2.75.6
       '@rollup/plugin-node-resolve': 13.3.0_rollup@2.75.6
+      '@rollup/plugin-replace': 4.0.0_rollup@2.75.6
       '@stylable/rollup-plugin': 5.0.1_rollup@2.75.6
       '@types/node': 17.0.45
       '@types/ramda': 0.28.14
@@ -62,6 +68,15 @@ importers:
       rollup-plugin-terser: 7.0.2_rollup@2.75.6
       rollup-plugin-windicss: 1.8.7_rollup@2.75.6
       windicss: 3.5.6
+
+  packages/hacg:
+    specifiers: {}
+
+  packages/scraper:
+    specifiers: {}
+
+  packages/v2ex:
+    specifiers: {}
 
 packages:
 
@@ -106,7 +121,7 @@ packages:
       js-tokens: 4.0.0
     dev: true
 
-  /@fattafatta/rescript-jotai/0.1.3_5h5puqnmpjalfurkk3ab5chqnu:
+  /@fattafatta/rescript-jotai/0.1.3_n47gytudsukodmg2sgbus5m4iq:
     resolution: {integrity: sha512-OWOagTizT0PGxIRdhbcrlhiNjb+V1C3LAmq7xHH4m+grxjdIa65CwzQJ1+KmOEHzWzVCCpYRZ605tCi3BCEZ/w==}
     peerDependencies:
       '@rescript/react': ^0.10.3
@@ -114,8 +129,8 @@ packages:
       react: ^17.0.2
     dependencies:
       '@rescript/react': 0.10.3_dmmjpkrptnkrz2kzqikv5vt4mi
-      jotai: 1.7.5_@preact+compat@17.1.1
-      react: /@preact/compat/17.1.1_preact@10.9.0
+      jotai: 1.7.6_@preact+compat@17.1.1
+      react: /@preact/compat/17.1.1_preact@10.10.0
     dev: false
 
   /@file-services/node/6.0.0:
@@ -194,12 +209,12 @@ packages:
       fastq: 1.13.0
     dev: true
 
-  /@preact/compat/17.1.1_preact@10.9.0:
+  /@preact/compat/17.1.1_preact@10.10.0:
     resolution: {integrity: sha512-OjQJ6oVcjFTiKWs4MIoE/cORFFGhqnt1RO0uxGNAFUglBMPNahMDJyX5w+qEOEaOpaNTLM1L3ixc2bFEpxgs3A==}
     peerDependencies:
       preact: '*'
     dependencies:
-      preact: 10.9.0
+      preact: 10.10.0
     dev: false
 
   /@rescript/react/0.10.3_dmmjpkrptnkrz2kzqikv5vt4mi:
@@ -208,8 +223,8 @@ packages:
       react: '>=16.8.1'
       react-dom: '>=16.8.1'
     dependencies:
-      react: /@preact/compat/17.1.1_preact@10.9.0
-      react-dom: /@preact/compat/17.1.1_preact@10.9.0
+      react: /@preact/compat/17.1.1_preact@10.10.0
+      react-dom: /@preact/compat/17.1.1_preact@10.10.0
     dev: false
 
   /@rollup/plugin-alias/3.1.9_rollup@2.75.6:
@@ -238,6 +253,17 @@ packages:
       rollup: 2.75.6
     dev: true
 
+  /@rollup/plugin-inject/4.0.4_rollup@2.75.6:
+    resolution: {integrity: sha512-4pbcU4J/nS+zuHk+c+OL3WtmEQhqxlZ9uqfjQMQDOHOPld7PsCd8k5LWs8h5wjwJN7MgnAn768F2sDxEP4eNFQ==}
+    peerDependencies:
+      rollup: ^1.20.0 || ^2.0.0
+    dependencies:
+      '@rollup/pluginutils': 3.1.0_rollup@2.75.6
+      estree-walker: 2.0.2
+      magic-string: 0.25.9
+      rollup: 2.75.6
+    dev: true
+
   /@rollup/plugin-node-resolve/13.3.0_rollup@2.75.6:
     resolution: {integrity: sha512-Lus8rbUo1eEcnS4yTFKLZrVumLPY+YayBdWXgFSHYhTT2iJbMhoaaBL3xl5NCdeRytErGr8tZ0L71BMRmnlwSw==}
     engines: {node: '>= 10.0.0'}
@@ -250,6 +276,16 @@ packages:
       is-builtin-module: 3.1.0
       is-module: 1.0.0
       resolve: 1.22.0
+      rollup: 2.75.6
+    dev: true
+
+  /@rollup/plugin-replace/4.0.0_rollup@2.75.6:
+    resolution: {integrity: sha512-+rumQFiaNac9y64OHtkHGmdjm7us9bo1PlbgQfdihQtuNxzjpaB064HbRnewUOggLQxVCCyINfStkgmBeQpv1g==}
+    peerDependencies:
+      rollup: ^1.20.0 || ^2.0.0
+    dependencies:
+      '@rollup/pluginutils': 3.1.0_rollup@2.75.6
+      magic-string: 0.25.9
       rollup: 2.75.6
     dev: true
 
@@ -400,8 +436,8 @@ packages:
       react-dom:
         optional: true
     dependencies:
-      react: /@preact/compat/17.1.1_preact@10.9.0
-      react-dom: /@preact/compat/17.1.1_preact@10.9.0
+      react: /@preact/compat/17.1.1_preact@10.10.0
+      react-dom: /@preact/compat/17.1.1_preact@10.10.0
     dev: false
 
   /@tokey/core/1.3.0:
@@ -1200,8 +1236,8 @@ packages:
     hasBin: true
     dev: true
 
-  /jotai/1.7.5_@preact+compat@17.1.1:
-    resolution: {integrity: sha512-EpawdHUOQmiKDoKRaFkO0L7R7YAFYBylK6M9IivMUPUpiHnXnt5e80AlqHvMUwg4p8BcQewh2JLWGQqFhtjpEA==}
+  /jotai/1.7.6_@preact+compat@17.1.1:
+    resolution: {integrity: sha512-D3R5f6OvwUPUyTPQY3wGP800nb6bDEOl/mqftjxg3gcHVITeFcldr9W9IBK+gXsow357vhNXuci/LfD+rl92PA==}
     engines: {node: '>=12.7.0'}
     peerDependencies:
       '@babel/core': '*'
@@ -1234,7 +1270,7 @@ packages:
       xstate:
         optional: true
     dependencies:
-      react: /@preact/compat/17.1.1_preact@10.9.0
+      react: /@preact/compat/17.1.1_preact@10.10.0
     dev: false
 
   /js-beautify/1.14.4:
@@ -1884,8 +1920,8 @@ packages:
       picocolors: 1.0.0
       source-map-js: 1.0.2
 
-  /preact/10.9.0:
-    resolution: {integrity: sha512-jO6/OvCRL+OT8gst/+Q2ir7dMybZAX8ioP02Zmzh3BkQMHLyqZSujvxbUriXvHi8qmhcHKC2Gwbog6Kt+YTh+Q==}
+  /preact/10.10.0:
+    resolution: {integrity: sha512-fszkg1iJJjq68I4lI8ZsmBiaoQiQHbxf1lNq+72EmC/mZOsFF5zn3k1yv9QGoFgIXzgsdSKtYymLJsrJPoamjQ==}
     dev: false
 
   /proto-list/1.2.4:
@@ -2268,6 +2304,14 @@ packages:
       picocolors: 1.0.0
     dev: true
 
+  /use-sync-external-store/1.2.0_@preact+compat@17.1.1:
+    resolution: {integrity: sha512-eEgnFxGQ1Ife9bzYs6VLi8/4X6CObHMw9Qr9tPY43iKwsPw8xE8+EFsf/2cFZ5S3esXgpWgtSCtLNS41F+sKPA==}
+    peerDependencies:
+      react: ^16.8.0 || ^17.0.0 || ^18.0.0
+    dependencies:
+      react: /@preact/compat/17.1.1_preact@10.10.0
+    dev: false
+
   /user-home/2.0.0:
     resolution: {integrity: sha512-KMWqdlOcjCYdtIJpicDSFBQ8nFwS2i9sslAd6f4+CBGcU4gist2REnr2fxj2YocvJFxSF3ZOHLYLVZnUxv4BZQ==}
     engines: {node: '>=0.10.0'}
@@ -2347,3 +2391,19 @@ packages:
       y18n: 5.0.8
       yargs-parser: 21.0.1
     dev: true
+
+  /zustand/4.0.0-rc.4_@preact+compat@17.1.1:
+    resolution: {integrity: sha512-BP35Rq40GBTKKtYyjLuZogzXGh289xqO8U8ivGIK43nRqURD2dEEImkUci1/jWRUz7J1OPJkUZuNySCho801gQ==}
+    engines: {node: '>=12.7.0'}
+    peerDependencies:
+      immer: '>=9.0'
+      react: '>=16.8'
+    peerDependenciesMeta:
+      immer:
+        optional: true
+      react:
+        optional: true
+    dependencies:
+      react: /@preact/compat/17.1.1_preact@10.10.0
+      use-sync-external-store: 1.2.0_@preact+compat@17.1.1
+    dev: false

@@ -14,9 +14,5 @@
   ],
   "suffix": ".bs.js",
   "reason": { "react-jsx": 3 },
-  "bs-dependencies": [
-    "rescript-webapi",
-    "@rescript/react",
-    "@fattafatta/rescript-jotai"
-  ]
+  "bs-dependencies": ["rescript-webapi", "@rescript/react"]
 }

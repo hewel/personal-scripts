@@ -1,0 +1,98 @@
+@keyframes bounceIn {
+  from,
+  20%,
+  40%,
+  60%,
+  80%,
+  to {
+    animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+  }
+
+  0% {
+    opacity: 0;
+    transform: scale3d(0.3, 0.3, 0.3);
+  }
+
+  20% {
+    transform: scale3d(1.02, 1.02, 1.02);
+  }
+
+  40% {
+    transform: scale3d(0.95, 0.95, 0.95);
+  }
+
+  60% {
+    opacity: 1;
+    transform: scale3d(1.01, 1.01, 1.01);
+  }
+
+  80% {
+    transform: scale3d(0.99, 0.99, 0.99);
+  }
+
+  to {
+    opacity: 1;
+    transform: scale3d(1, 1, 1);
+  }
+}
+
+@keyframes fadeOutUp {
+  from {
+    opacity: 1;
+    margin-bottom: 0;
+  }
+
+  to {
+    opacity: 0;
+    transform: translate3d(0, -100%, 0);
+    margin-bottom: -56px;
+  }
+}
+
+@keyframes slideUp {
+  from {
+    transform: translate3d(0, 0, 0);
+  }
+
+  to {
+    transform: translate3d(0, -100%, 0);
+  }
+}
+
+@keyframes zoomOut {
+  from {
+    transform: scale3d(1, 1, 1);
+  }
+
+  to {
+    transform: scale3d(1, 0, 1);
+  }
+}
+
+:root {
+  --in-duration: 0.4s;
+  --out-duration: 0.4s;
+  --out-timing: ease-out;
+}
+
+.bounceIn {
+  animation-name: bounceIn;
+  animation-duration: var(--in-duration);
+}
+.fadeOutUp {
+  animation-name: fadeOutUp;
+  animation-fill-mode: both;
+  animation-duration: var(--out-duration);
+  animation-timing-function: var(--out-timing);
+}
+.slideUp {
+  animation-name: slideUp;
+  animation-duration: var(--out-duration);
+  animation-timing-function: var(--out-timing);
+}
+.zoomOut {
+  animation-name: zoomOut;
+  animation-fill-mode: both;
+  animation-duration: var(--out-duration);
+  animation-timing-function: var(--out-timing);
+}
